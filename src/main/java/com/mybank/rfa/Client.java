@@ -67,9 +67,23 @@ public class Client {
 	 * @param balance
 	 */
 	private void setBalance(BigDecimal balance) {
+		if (balance == null) {
+			throw new IllegalArgumentException("the client balance should not be null");
+		}
 		this.balance = balance;
 	}
 
+	/**
+	 * Withdraws the given amount from the client's account
+	 * 
+	 * @param amount
+	 *            the amount to withdraw
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if the amount if null
+	 * @throws InvalidOperationException
+	 *             if the amount is negative
+	 */
 	public void withdraws(BigDecimal amount) throws InvalidOperationException {
 		if (amount == null) {
 			throw new IllegalArgumentException(String.format("amount should not be null: Client=%1$s", getName()));
